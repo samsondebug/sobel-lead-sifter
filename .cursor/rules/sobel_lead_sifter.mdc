@@ -1,0 +1,4 @@
+- When running `sift_sobel_leads.py`, use the virtual environment at `D:\0. DK LIFE\sobel\sobel-lead-sifter\.venv`.
+- Execute with: `python sift_sobel_leads.py leads.csv`.
+- Ensure `leads.csv` exists in the project root before running.
+- Log output clearly and save results to `sobel_worthwhile_leads.csv`.

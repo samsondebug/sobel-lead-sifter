@@ -1,0 +1,9 @@
+Name,Email,Phone,Lead_Status,Property_Size,Estimated_Value,State,Lead_Source
+John Doe,john.doe@email.com,512-555-1234,Warm,10.5,75000,TX,Website
+Jane Smith,jane.smith@email.com,,Hot,7.2,120000,NY,Referral
+Bob Johnson,,214-555-5678,Cold,3.1,20000,TX,Email Campaign
+Alice Brown,alice.brown@email.com,713-555-9012,New,15.0,200000,FL,Direct Mail
+Tom Wilson,tom.wilson@email.com,305-555-3456,Rejected,4.0,30000,AZ,Partner
+Sarah Davis,sarah.davis@email.com,512-555-7890,Warm,8.5,90000,TX,Website
+Mike Lee,,602-555-2345,Hot,12.3,150000,CA,Referral
+Emily Clark,emily.clark@email.com,,New,6.0,60000,TX,Email Campaign
