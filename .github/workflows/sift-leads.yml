@@ -1,0 +1,57 @@
+name: Sift Sobel Leads
+
+on:
+  push:
+    paths:
+      - 'leads.csv'
+      - 'sift_sobel_leads.py'
+      - '.github/workflows/sift-leads.yml'
+  workflow_dispatch:
+    inputs:
+      csv_path:
+        description: 'Path to the leads CSV to process'
+        required: false
+        default: 'leads.csv'
+        type: string
+
+jobs:
+  sift-leads:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          else
+            pip install pandas
+          fi
+
+      - name: Run lead sifting script
+        shell: bash
+        run: |
+          CSV_PATH="${{ github.event.inputs.csv_path }}"
+          if [ -z "$CSV_PATH" ]; then
+            CSV_PATH="leads.csv"
+          fi
+          if [ ! -f "$CSV_PATH" ]; then
+            echo "Input CSV not found: $CSV_PATH" >&2
+            exit 1
+          fi
+          python sift_sobel_leads.py "$CSV_PATH"
+
+      - name: Upload output CSV
+        uses: actions/upload-artifact@v4
+        with:
+          name: worthwhile-leads
+          path: sobel_worthwhile_leads.csv
+          if-no-files-found: error
